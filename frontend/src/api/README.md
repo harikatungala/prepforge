@@ -1,19 +1,24 @@
-# API
+# Frontend API Client
 
-This directory contains API-related utilities.
+This directory contains the API client configuration.
 
 ## Files
 
-- `api.js` - Axios instance and interceptors
-- `endpoints.js` - API endpoint definitions
+- `api.js` - Axios instance with interceptors for authentication and error handling
 
 ## Usage
 
 ```javascript
-import api from './api'
+import api from './api/api'
 
-const getUser = async (userId) => {
-  const response = await api.get(`/users/${userId}`)
-  return response.data
-}
+// Make authenticated requests
+const response = await api.get('/api/users/me')
+const data = await api.post('/api/auth/login', { email, password })
 ```
+
+## Features
+
+- ✅ Automatic Bearer token injection
+- ✅ Token refresh on 401 responses
+- ✅ Centralized error handling
+- ✅ Environment-based API URL
